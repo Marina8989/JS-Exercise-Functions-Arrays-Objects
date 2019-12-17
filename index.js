@@ -285,16 +285,16 @@ console.log(getLastCarInfo(inventory));
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
  */
-function getCarInfoById(arr, num) {
+function getCarInfoById(inventory, id) {
     /* code here */
-    for (let num = 0; num < arr.length; num++) {
-        if (num === arr.id) {
-            return `This is a ${arr[num].car_make} ${arr[num].car_model}`;
+    for (let i = 0; i < inventory.length; i++) {
+        if (inventory[i].id == id) {
+            return `This is a ${inventory[i].car_make} ${inventory[i].car_model}`;
         }
     }
-
 }
-//console.log(getCarInfoById(inventory, 1));
+
+console.log(getCarInfoById(inventory, 5));
 
 /**
  * ### Challenge `sortCarInventory`
@@ -306,14 +306,14 @@ function getCarInfoById(arr, num) {
  */
 
 
-function sortCarInventory(arr) {
+function sortCarInventory(inventory) {
     /* code here */
-    let x = arr.sort(function(a, b) {
-        return a - b;
+    return inventory.sort(function(a, b) {
+        return (a.car_model > b.car_model) ? 1 : (a.car_model < b.car_model) ? -1 : 0;
     })
-    return arr.x;
+
 }
-//console.log(sortCarInventory(inventory));
+console.log(sortCarInventory(inventory));
 
 
 
@@ -329,10 +329,12 @@ function sortCarInventory(arr) {
 
 
 function getModelYears(inventory) {
+    let newArr = [];
     for (let i = 0; i < inventory.length; i++) {
-        let newArr = [];
-        return newArr.push(inventory[i].car_year);
+
+        newArr.push(inventory[i].car_year);
     }
+    return newArr;
 }
 console.log(getModelYears(inventory));
 /**
@@ -347,12 +349,12 @@ console.log(getModelYears(inventory));
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
  */
-function getOlderCars(arr, maxYear) {
+function getOlderCars(inventory, num) {
     /* code here */
     let newArr = [];
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i].car_year > maxYear) {
-            newArr.push(arr[i].car_year);
+    for (var i = 0; i <= inventory.length; i++) {
+        if (inventory[i].car_year > num) {
+            newArr.push(inventory[i].car_year);
             return newArr;
         } else {
             return newArr = [];
@@ -374,10 +376,19 @@ console.log(getOlderCars(inventory, 1983));
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
  */
-function getGermanCars( /* code here */ ) {
+function getGermanCars(inventory) {
     /* code here */
-}
+    for (let i = 0; i < inventory.length; i++) {
+        let newArr = [];
+        if (inventory[i].car_make === 'Audi' || inventory[i].car_make === 'Mercedes-Benz' || inventory[i].car_make === 'Volkswagen' || inventory[i].car_make === 'BMW') {
+            newArr.push(inventory[i].car_make);
 
+        }
+        return newArr;
+    }
+
+}
+console.log(getGermanCars(inventory));
 /**
  * ### Challenge refactor to arrow functions
  * 
